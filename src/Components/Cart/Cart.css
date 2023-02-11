@@ -1,0 +1,23 @@
+.product-body{
+    display: grid;
+    width: 100vw;
+    height: auto;
+}
+
+.order-btn{
+    margin-right: 30px;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+
+    /* place-items: end; */
+}
+.product-box{
+    /* display: flex; */
+    background-color: hwb(193 48% 5%);
+    width: 100vw;
+}
+.total{
+    font-weight: 500;
+    margin-right: 20px;
+}

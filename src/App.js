@@ -1,23 +1,31 @@
-import logo from './logo.svg';
+//https://dummyjson.com/products
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
+import { axiosClient } from './axiosClient';
+import Home from './Components/Home/Home';
+import CustomRoutes from './CustomRoutes';
+import {addtoStore, ADD_TO_Store} from './Store/actions'
 
 function App() {
+  const dispatch=useDispatch();
+  const store=useSelector((state)=>state);
+  useEffect(()=>{
+    axiosClient.get("").then((resp)=>{
+      dispatch({
+       type:ADD_TO_Store,
+       payload:resp?.data?.products
+        
+      })
+      console.log(resp?.data?.products)
+    })
+    console.log(store)
+
+  },[])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <Home />
+     <CustomRoutes/>
     </div>
   );
 }
